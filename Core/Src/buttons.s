@@ -85,11 +85,35 @@ button_pressed:
     bl      button_raw
     mov     r5, r0                      /* r5 = niveau brut normalisé */
 
-    /* ----- À COMPLÉTER : étapes 2 à 4 ci-dessus -----
-     * Indices : ldr r6, =btn_valide ; ldr r0, [r6, r4, lsl #2]
-     *           ldr r6, =btn_compteur ; ... ; str r0, [r6, r4, lsl #2]
-     */
+/* ----- E3 : anti-rebond par comptage d'échantillons ----- */
+    ldr     r6, =btn_valide
+    ldr     r0, [r6, r4, lsl #2]        @ r0 = dernier niveau validé
+    cmp     r5, r0
+    bne     button_pressed_diff
 
+    /* niveau brut == niveau déjà validé : pas de rebond en cours */
+    movs    r0, #0
+    ldr     r6, =btn_compteur
+    str     r0, [r6, r4, lsl #2]        @ btn_compteur[id] = 0
+    b       button_pressed_non
+
+button_pressed_diff:
+    ldr     r6, =btn_compteur
+    ldr     r0, [r6, r4, lsl #2]
+    adds    r0, r0, #1                  @ btn_compteur[id]++
+    str     r0, [r6, r4, lsl #2]
+    cmp     r0, #(ANTIREBOND_MS / PERIODE_SCRUTATION_MS)
+    blo     button_pressed_non          @ fenêtre pas encore atteinte
+
+    /* fenêtre atteinte : le niveau est stable, on le valide */
+    movs    r0, #0
+    str     r0, [r6, r4, lsl #2]        @ btn_compteur[id] = 0
+    ldr     r6, =btn_valide
+    str     r5, [r6, r4, lsl #2]        @ btn_valide[id] = niveau
+    cmp     r5, #1
+    bne     button_pressed_non          @ relâchement validé : aucun événement
+    movs    r0, #1
+    pop     {r4, r5, r6, pc}
 button_pressed_non:
     movs    r0, #0                      /* squelette : aucun événement */
     pop     {r4, r5, r6, pc}
