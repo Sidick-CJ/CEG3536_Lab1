@@ -46,7 +46,42 @@ estop_flag:     .space  4           /* 1 = E-Stop reçu, à consommer par fsm_st
     .global estop_init
     .type   estop_init, %function
 estop_init:
-    /* ----- À COMPLÉTER : étapes 1 à 4 ci-dessus ----- */
+    ldr     r0, =EXTI_BASE
+    ldr     r1, [r0, #EXTI_EXTICR1]
+    bic     r1, r1, #(0xFF << EXTICR1_EXTI2_POS)
+    orr     r1, r1, #(EXTICR_PORT_B << EXTICR1_EXTI2_POS)
+    str     r1, [r0, #EXTI_EXTICR1]     @ 1. ligne 2 -> port B
+
+    movs    r2, #EXTI_LIGNE2
+    ldr     r1, [r0, #EXTI_RTSR1]
+.if BTN_ESTOP_ACTIF_HAUT
+    orr     r1, r1, r2                  @ front montant = appui (actif haut)
+.else
+    bic     r1, r1, r2
+.endif
+    str     r1, [r0, #EXTI_RTSR1]
+
+    ldr     r1, [r0, #EXTI_FTSR1]
+.if BTN_ESTOP_ACTIF_HAUT
+    bic     r1, r1, r2
+.else
+    orr     r1, r1, r2                  @ front descendant = appui (actif bas)
+.endif
+    str     r1, [r0, #EXTI_FTSR1]       @ 2. le bon front
+
+    str     r2, [r0, #EXTI_RPR1]        @ nettoyer toute requête déjà en attente
+    str     r2, [r0, #EXTI_FPR1]
+
+    ldr     r1, [r0, #EXTI_IMR1]
+    orr     r1, r1, r2
+    str     r1, [r0, #EXTI_IMR1]        @ 3. démasquer
+
+    ldr     r0, =NVIC_IPR_BASE
+    movs    r1, #NVIC_PRIO_MAX
+    strb    r1, [r0, #EXTI2_IRQn]       @ 4. priorité maximale
+    ldr     r0, =NVIC_ISER0
+    movs    r1, #(1 << EXTI2_IRQn)
+    str     r1, [r0]                    @ 4. activer l'IRQ
     bx      lr
     .size   estop_init, .-estop_init
 
@@ -66,7 +101,23 @@ estop_init:
     .global EXTI2_IRQHandler
     .type   EXTI2_IRQHandler, %function
 EXTI2_IRQHandler:
-    /* ----- À COMPLÉTER : étapes 1 et 2 ----- */
+    /* 1. état sûr immédiat, par BSRR */
+    ldr     r0, =GPIOC_BASE
+    mov     r1, #(1 << (LED_VERTE_PIN + 16))
+    str     r1, [r0, #GPIO_BSRR]        @ verte éteinte
+
+    ldr     r0, =GPIOB_BASE
+    mov     r1, #(1 << (LED_BLEUE_PIN + 16))
+    str     r1, [r0, #GPIO_BSRR]        @ bleue éteinte
+
+    ldr     r0, =GPIOA_BASE
+    mov     r1, #(1 << LED_ROUGE_PIN)
+    str     r1, [r0, #GPIO_BSRR]        @ rouge allumée
+
+    /* 2. drapeau */
+    ldr     r0, =estop_flag
+    movs    r1, #1
+    str     r1, [r0]
 
     /* 3. effacement de la requête (écriture de 1 : w1c) */
     ldr     r0, =EXTI_BASE
