@@ -1,6 +1,6 @@
 # JOURNAL.md — Journal d'équipe, CEG 3536, laboratoire 1 (automne 2026)
 
-Équipe : `Sidick`, `Amr Ben Reguiga` et `Chandish Reebye (300329078, rejoint l'équipe à la séance 2, validé par l'équipe enseignante)` — Section : `A01 (vendredi)` — Dépôt Git : `https://github.com/Sidick-CJ/CEG3536_Lab1`
+Équipe : `Sidick Diomande`, `Amr Ben Reguiga` et `Chandish Reebye (300329078, rejoint l'équipe à la séance 2, validé par l'équipe enseignante)` — Section : `A01 (vendredi)` — Dépôt Git : `https://github.com/Sidick-CJ/CEG3536_Lab1`
 
 ## Jalon J1 (au plus tard le vendredi 25 septembre 2026, validé dans Git)
 
