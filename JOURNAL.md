@@ -1,6 +1,6 @@
 # JOURNAL.md — Journal d'équipe, CEG 3536, laboratoire 1 (automne 2026)
 
-Équipe : `Sidick` et `Amr Ben Reguiga` — Section : `A01 (vendredi)` — Dépôt Git : `https://github.com/Sidick-CJ/CEG3536_Lab1`
+Équipe : `Sidick`, `Amr Ben Reguiga` et `Chandish Reebye (300329078, rejoint l'équipe à la séance 2, validé par l'équipe enseignante)` — Section : `A01 (vendredi)` — Dépôt Git : `https://github.com/Sidick-CJ/CEG3536_Lab1`
 
 ## Jalon J1 (au plus tard le vendredi 25 septembre 2026, validé dans Git)
 
@@ -18,13 +18,13 @@
 | E9 | Le système reste cohérent lors d'appuis simultanés ou d'un E-Stop pendant une transition/un clignotement. | Jamais deux DEL allumées simultanément ; jamais de sortie d'ARRÊT_URGENCE sans acquittement valide. | Un seul point d'appel de led_set dans tout le programme (fsm_maj_del), garanti par construction (critère B3). |
 
 ### Rôles et rotation
-| Séance | Réalise | Valide (essais, mesures, relecture) |
-|---|---|---|
-| Séance 0 | Sidick et Amr (travail conjoint — DEL rouge allumée ; rôles non formalisés) | — |
-| Séance 1 | Amr | Sidick |
-| Séance 2 | Sidick | Amr |
+| Séance | Réalise | Valide (essais, mesures, relecture) | Autres membres présents |
+|---|---|---|---|
+| Séance 0 | Sidick et Amr (travail conjoint — DEL rouge allumée ; rôles non formalisés) | — | — |
+| Séance 1 | Amr | Sidick | — |
+| Séance 2 | Sidick | Amr | Chandish Reebye (300329078, rejoint l'équipe à cette séance) |
 
-*Note : rotation suivie à partir de la séance 1 (Amr réalise / Sidick valide), inversée à la séance 2 (Sidick réalise / Amr valide).*
+*Note : rotation suivie à partir de la séance 1 (Amr réalise / Sidick valide), inversée à la séance 2 (Sidick réalise / Amr valide). Chandish Reebye a rejoint l'équipe à la séance 2, une fois tous les groupes déjà formés ; cet ajout a été validé par l'équipe enseignante.*
 
 ### Échéancier des laboratoires 1 à 5
 | Laboratoire | Séances | Démonstration | Remise | Responsable du suivi |
@@ -53,7 +53,7 @@
 - Essais et mesures : essais T1 à T10 amorcés en fin de séance.
 - Validations Git :
 
-### Séance 2 — 2 octobre 2026 — réalise : Sidick / valide : Amr
+### Séance 2 — 2 octobre 2026 — réalise : Sidick / valide : Amr / présent : Chandish Reebye (300329078, rejoint l'équipe à cette séance)
 - Objectifs : finaliser les essais (T1 à T10) et démonstration devant l'assistant.
 - Fait : tous les essais T1 à T10 démontrés avec succès devant l'assistant. Lecture des registres IDR (T4) et vérification du comportement complet (E1-E9) confirmées au débogueur (Live Expressions / Debugger Console).
 - Décisions : niveaux actifs des trois boutons (User, E-Stop, Touch En) confirmés hauts par lecture directe de IDR (PC13) et par le comportement correct de l'acquittement/Touch En (PB2, PB5) — aucune modification de registres.inc nécessaire.
@@ -65,7 +65,7 @@
 - Objectifs : compléter le rapport et le journal pour la remise du 9 octobre, 23 h 59.
 - Fait : calcul théorique de la calibration de delay_ms (T6, voir ci-dessous) en l'absence d'accès au matériel ; rédaction du rapport.
 - Décisions : calibration de DELAY_BOUCLES_PAR_MS non modifiée dans le code avant remise (pas de matériel disponible pour retester) ; correction documentée comme limite connue, à appliquer au prochain accès au matériel.
-- Difficultés et solutions :
+- Difficultés et solutions : conflit Git non résolu (JOURNAL.md modifié en parallèle sur GitHub et localement) — résolu en conservant la version complète (essais, équipe à 3, déclaration IA) et en écartant la version abrégée distante.
 - Essais et mesures : T6 calculé théoriquement (voir tableau).
 - Validations Git :
 
@@ -90,4 +90,4 @@
 
 ## Déclaration des sources et de l'usage d'outils d'IA générative
 - Sources : manuel de référence RM0438 (STM32L552), guide de plateforme Leafy, tutoriels TUT01/TUT02 du cours, code de départ fourni (CEG3536_Lab1_Demarrage).
-- Outils d'IA : Aucun ne fût utilisé
+- Outils d'IA (outil, version, usage) : Claude (Anthropic, assistant Claude Code/Cowork) — utilisé en appui tout au long du laboratoire, sous la supervision de l'équipe : (1) reformulation des exigences E1 à E9 et structuration du jalon J1 ; (2) rédaction d'une partie du code assembleur à compléter dans fsm.s (fsm_step, fsm_maj_del) et estop.s (estop_init, EXTI2_IRQHandler), à partir des exercices des tutoriels et de l'énoncé, relue et comprise par l'équipe ; (3) aide au dépannage (configuration du projet STM32CubeIDE, erreurs de compilation et de connexion du débogueur ST-Link, expressions GDB, résolution d'un conflit Git) ; (4) calcul théorique de la calibration de delay_ms (T6) ; (5) aide à la rédaction de ce journal et du rapport. Chaque membre de l'équipe reste en mesure d'expliquer et de justifier tout le contenu remis.
