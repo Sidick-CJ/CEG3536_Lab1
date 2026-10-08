@@ -90,4 +90,4 @@
 
 ## Déclaration des sources et de l'usage d'outils d'IA générative
 - Sources : manuel de référence RM0438 (STM32L552), guide de plateforme Leafy, tutoriels TUT01/TUT02 du cours, code de départ fourni (CEG3536_Lab1_Demarrage).
-- Outils d'IA (outil, version, usage) : Claude (Anthropic, assistant Claude Code/Cowork) — utilisé en appui tout au long du laboratoire, sous la supervision de l'équipe : (1) reformulation des exigences E1 à E9 et structuration du jalon J1 ; (2) rédaction d'une partie du code assembleur à compléter dans `fsm.s` (fsm_step, fsm_maj_del) et `estop.s` (estop_init, EXTI2_IRQHandler), à partir des exercices des tutoriels et de l'énoncé, relue et comprise par l'équipe ; (3) aide au dépannage (configuration du projet STM32CubeIDE, erreurs de compilation et de connexion du débogueur ST-Link, expressions GDB pour lire les registres et variables en mémoire) ; (4) calcul théorique de la calibration de delay_ms (T6) en l'absence d'accès au matériel ; (5) aide à la rédaction de ce journal et du rapport. Chaque membre de l'équipe reste en mesure d'expliquer et de justifier tout le contenu remis.
+- Outils d'IA : Aucun ne fût utilisé
