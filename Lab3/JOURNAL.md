@@ -124,4 +124,3 @@ Routine comparée : `motor_set_pwm` (motor.s) ↔ `motor_set_pwm_c` (l3a_c.c)
 
 ## Déclaration des sources et de l'usage d'outils d'IA générative
 - Sources (complément, corrigé du laboratoire 2 le cas échéant, CMSIS, manuel) :
-- Outils d'IA (outil, version, usage) ou « aucun usage » :
