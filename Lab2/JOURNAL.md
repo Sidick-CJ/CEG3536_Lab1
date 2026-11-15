@@ -93,4 +93,3 @@
 - Cas d'essai et résultats : 0 → 0 ; 25 / 50 / 75 / 100 → 50 / 100 / 150 / 200 ; 150 → 200 (saturation) ; 1 → 2. Conformes.
 
 ## Déclaration des sources et de l'usage d'outils d'IA générative
-- Sources : énoncé du laboratoire 2 (v1.3), complément de démarrage CEG3536_Lab2_Complement, projet de l'équipe du lab 1, RM0438, PM0264, guide de la plateforme Leafy.
