@@ -1,0 +1,19 @@
+cc -std=gnu11 -Wall -Wextra -O0 -g -I../Core/Inc -o test_evq test_evq.c ../Core/Src/evq.c ../Core/Src/evq_test.c
+./test_evq
+evq : capacite 32, sizeof(evq_event_t) = 12, int = 32 bits, long = 64 bits
+  cas 1 : reussi
+  cas 2 : reussi
+  cas 3 : reussi
+  cas 4 : reussi
+  cas 5 : reussi
+  cas 6 : reussi
+  cas 7 : reussi
+  cas 8 : reussi
+  cas 9 : reussi
+  cas 10 : reussi
+  cas 11 : reussi
+  cas 12 : reussi
+  cas 13 : reussi
+13 cas, 0 echec(s) : OK
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Linux 6.18.44-fc-v445
