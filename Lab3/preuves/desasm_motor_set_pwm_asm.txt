@@ -1,0 +1,13 @@
+000000e0 <motor_set_pwm>:
+  e0:	2864      	cmp	r0, #100	@ 0x64
+  e2:	bf88      	it	hi
+  e4:	2064      	movhi	r0, #100	@ 0x64
+  e6:	21c8      	movs	r1, #200	@ 0xc8
+  e8:	fb00 f001 	mul.w	r0, r0, r1
+  ec:	2164      	movs	r1, #100	@ 0x64
+  ee:	fbb0 f0f1 	udiv	r0, r0, r1
+  f2:	4a1c      	ldr	r2, [pc, #112]	@ (164 <motor_stop_now+0x24>)
+  f4:	6350      	str	r0, [r2, #52]	@ 0x34
+  f6:	4770      	bx	lr
+
+000000f8 <motor_set_dir>:

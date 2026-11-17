@@ -1,0 +1,71 @@
+00000000 <fsm_sorties>:
+   0:	b510      	push	{r4, lr}
+   2:	4c27      	ldr	r4, [pc, #156]	@ (a0 <fsm_sorties+0xa0>)
+   4:	6923      	ldr	r3, [r4, #16]
+   6:	2b01      	cmp	r3, #1
+   8:	d01b      	beq.n	42 <fsm_sorties+0x42>
+   a:	6923      	ldr	r3, [r4, #16]
+   c:	2b02      	cmp	r3, #2
+   e:	d018      	beq.n	42 <fsm_sorties+0x42>
+  10:	2300      	movs	r3, #0
+  12:	61e3      	str	r3, [r4, #28]
+  14:	6923      	ldr	r3, [r4, #16]
+  16:	2b03      	cmp	r3, #3
+  18:	d126      	bne.n	68 <fsm_sorties+0x68>
+  1a:	e9d4 3002 	ldrd	r3, r0, [r4, #8]
+  1e:	3301      	adds	r3, #1
+  20:	2bf9      	cmp	r3, #249	@ 0xf9
+  22:	60a3      	str	r3, [r4, #8]
+  24:	d904      	bls.n	30 <fsm_sorties+0x30>
+  26:	2300      	movs	r3, #0
+  28:	f080 0001 	eor.w	r0, r0, #1
+  2c:	e9c4 3002 	strd	r3, r0, [r4, #8]
+  30:	3800      	subs	r0, #0
+  32:	bf18      	it	ne
+  34:	2001      	movne	r0, #1
+  36:	f7ff fffe 	bl	0 <led_set>
+  3a:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+  3e:	f7ff bffe 	b.w	0 <buzzer_step>
+  42:	69e3      	ldr	r3, [r4, #28]
+  44:	3301      	adds	r3, #1
+  46:	2b09      	cmp	r3, #9
+  48:	d915      	bls.n	76 <fsm_sorties+0x76>
+  4a:	2100      	movs	r1, #0
+  4c:	6822      	ldr	r2, [r4, #0]
+  4e:	6863      	ldr	r3, [r4, #4]
+  50:	61e1      	str	r1, [r4, #28]
+  52:	429a      	cmp	r2, r3
+  54:	d211      	bcs.n	7a <fsm_sorties+0x7a>
+  56:	6823      	ldr	r3, [r4, #0]
+  58:	3301      	adds	r3, #1
+  5a:	6023      	str	r3, [r4, #0]
+  5c:	6820      	ldr	r0, [r4, #0]
+  5e:	f7ff fffe 	bl	0 <motor_set_pwm>
+  62:	6923      	ldr	r3, [r4, #16]
+  64:	2b03      	cmp	r3, #3
+  66:	d0d8      	beq.n	1a <fsm_sorties+0x1a>
+  68:	6923      	ldr	r3, [r4, #16]
+  6a:	2b02      	cmp	r3, #2
+  6c:	d90d      	bls.n	8a <fsm_sorties+0x8a>
+  6e:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+  72:	f7ff bffe 	b.w	0 <buzzer_step>
+  76:	61e3      	str	r3, [r4, #28]
+  78:	e7f3      	b.n	62 <fsm_sorties+0x62>
+  7a:	6822      	ldr	r2, [r4, #0]
+  7c:	6863      	ldr	r3, [r4, #4]
+  7e:	429a      	cmp	r2, r3
+  80:	d9ef      	bls.n	62 <fsm_sorties+0x62>
+  82:	6823      	ldr	r3, [r4, #0]
+  84:	3b01      	subs	r3, #1
+  86:	6023      	str	r3, [r4, #0]
+  88:	e7e8      	b.n	5c <fsm_sorties+0x5c>
+  8a:	6922      	ldr	r2, [r4, #16]
+  8c:	4b05      	ldr	r3, [pc, #20]	@ (a4 <fsm_sorties+0xa4>)
+  8e:	4413      	add	r3, r2
+  90:	7918      	ldrb	r0, [r3, #4]
+  92:	f7ff fffe 	bl	0 <led_set>
+  96:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+  9a:	f7ff bffe 	b.w	0 <buzzer_step>
+  9e:	bf00      	nop
+	...
+

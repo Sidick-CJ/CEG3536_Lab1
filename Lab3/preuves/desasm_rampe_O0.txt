@@ -1,0 +1,64 @@
+00000000 <rampe>:
+   0:	b580      	push	{r7, lr}
+   2:	af00      	add	r7, sp, #0
+   4:	4b1c      	ldr	r3, [pc, #112]	@ (78 <rampe+0x78>)
+   6:	681b      	ldr	r3, [r3, #0]
+   8:	2b01      	cmp	r3, #1
+   a:	d007      	beq.n	1c <rampe+0x1c>
+   c:	4b1a      	ldr	r3, [pc, #104]	@ (78 <rampe+0x78>)
+   e:	681b      	ldr	r3, [r3, #0]
+  10:	2b02      	cmp	r3, #2
+  12:	d003      	beq.n	1c <rampe+0x1c>
+  14:	4b19      	ldr	r3, [pc, #100]	@ (7c <rampe+0x7c>)
+  16:	2200      	movs	r2, #0
+  18:	601a      	str	r2, [r3, #0]
+  1a:	e02b      	b.n	74 <rampe+0x74>
+  1c:	4b17      	ldr	r3, [pc, #92]	@ (7c <rampe+0x7c>)
+  1e:	681b      	ldr	r3, [r3, #0]
+  20:	3301      	adds	r3, #1
+  22:	4a16      	ldr	r2, [pc, #88]	@ (7c <rampe+0x7c>)
+  24:	6013      	str	r3, [r2, #0]
+  26:	4b15      	ldr	r3, [pc, #84]	@ (7c <rampe+0x7c>)
+  28:	681b      	ldr	r3, [r3, #0]
+  2a:	2b09      	cmp	r3, #9
+  2c:	d91f      	bls.n	6e <rampe+0x6e>
+  2e:	4b13      	ldr	r3, [pc, #76]	@ (7c <rampe+0x7c>)
+  30:	2200      	movs	r2, #0
+  32:	601a      	str	r2, [r3, #0]
+  34:	4b12      	ldr	r3, [pc, #72]	@ (80 <rampe+0x80>)
+  36:	681a      	ldr	r2, [r3, #0]
+  38:	4b12      	ldr	r3, [pc, #72]	@ (84 <rampe+0x84>)
+  3a:	681b      	ldr	r3, [r3, #0]
+  3c:	429a      	cmp	r2, r3
+  3e:	d205      	bcs.n	4c <rampe+0x4c>
+  40:	4b0f      	ldr	r3, [pc, #60]	@ (80 <rampe+0x80>)
+  42:	681b      	ldr	r3, [r3, #0]
+  44:	3301      	adds	r3, #1
+  46:	4a0e      	ldr	r2, [pc, #56]	@ (80 <rampe+0x80>)
+  48:	6013      	str	r3, [r2, #0]
+  4a:	e00a      	b.n	62 <rampe+0x62>
+  4c:	4b0c      	ldr	r3, [pc, #48]	@ (80 <rampe+0x80>)
+  4e:	681a      	ldr	r2, [r3, #0]
+  50:	4b0c      	ldr	r3, [pc, #48]	@ (84 <rampe+0x84>)
+  52:	681b      	ldr	r3, [r3, #0]
+  54:	429a      	cmp	r2, r3
+  56:	d90c      	bls.n	72 <rampe+0x72>
+  58:	4b09      	ldr	r3, [pc, #36]	@ (80 <rampe+0x80>)
+  5a:	681b      	ldr	r3, [r3, #0]
+  5c:	3b01      	subs	r3, #1
+  5e:	4a08      	ldr	r2, [pc, #32]	@ (80 <rampe+0x80>)
+  60:	6013      	str	r3, [r2, #0]
+  62:	4b07      	ldr	r3, [pc, #28]	@ (80 <rampe+0x80>)
+  64:	681b      	ldr	r3, [r3, #0]
+  66:	4618      	mov	r0, r3
+  68:	f7ff fffe 	bl	0 <motor_set_pwm>
+  6c:	e002      	b.n	74 <rampe+0x74>
+  6e:	bf00      	nop
+  70:	e000      	b.n	74 <rampe+0x74>
+  72:	bf00      	nop
+  74:	bd80      	pop	{r7, pc}
+  76:	bf00      	nop
+  78:	00000000 	.word	0x00000000
+  7c:	0000001c 	.word	0x0000001c
+	...
+
