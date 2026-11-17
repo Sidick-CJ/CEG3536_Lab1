@@ -136,4 +136,3 @@ Résultats obtenus sur un modèle des deux codes machine vérifié sur hôte (0 
 
 ## Déclaration des sources et de l'usage d'outils d'IA générative
 - Sources : complément CEG3536_Lab3_Complement.zip, en-têtes CMSIS (ARM, STMicroelectronics), énoncé du laboratoire 3 v1.3, RM0438, guide de la plateforme Leafy, projet du laboratoire 2 de l'équipe.
-- Outils d'IA : Claude (Anthropic), modèle Claude Opus 5.5 — aide à l'écriture du code C et de vitesse.s à partir des squelettes, explication des étapes d'essai, désassemblage et tailles hors carte, mise en forme du rapport.
